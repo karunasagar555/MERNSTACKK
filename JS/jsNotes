@@ -1,0 +1,396 @@
+NOTE : Javascript is a synchronous and single-threaded language (meaning it can only do one thing at a time and in a specific order)
+
+
+
+
+
+///// Function Statements & Function Expressions
+
+Q) what is a Function Statement ?
+
+S:  function a() {
+       console.log("a called");
+}
+
+NOTES : Functions are HEART of JS, they are the FIRST CLASS CITIZENS.
+
+Q) what is a Function Expression ?
+
+S: we can assign a function to a variable, function acts like a value here, we are putting function into b.
+
+var b = function () {
+    console.log("b called");
+}
+
+NOTE : both Function Statements and Function Expressions are ways to create functions, the difference between these is in HOISTING.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////// Event Bubbling and Event Capturing
+
+1) what is Event Bubbling ?
+
+s: Bubbling 
+
+
+2) what is Event Capturig ?
+
+s: it is an event which trickles down the DOM hierarchy, it has a performance issue and is very expensive
+
+Note : Eventbubling is used by default if we do not pass any third argument insdie the eventlistener function
+
+Note : Event Capturing is also known as Event Trickling
+
+Note : According to W3C model the whole chain is anyways followed, the trickling down happens then the bubbling up happens whether you do anything 
+
+Note : According to W3C, first the event propogation happens TOP-DOWN the hierarchy ie Capturing happens first than bubbling out happens and the callback methods are called according to the parameters what we pass (true and false) 
+
+Q) what are callback Functions in JS ?
+S: the function which is passed into another function is known as a callback function.
+
+Q) what is the significance of this callBack function ?
+S: this function is very powerful in JS, it gives us access to the whole Asynchronous world in a synchronous single-threaded language, because of callBack functions we can do ASYNCHRONOUS things inside JS.
+
+Q) what is MAIN THREAD ??
+s : // callStack aka MAIN THREAD, callstack is also called as MAIN THREAD.
+
+
+Q) what is blocking the MAIN THREAD ?
+s: if any operation blocks this callstack that is called blocking the MAIN THREAD.
+
+
+Q) what is setTimeout ?
+S: It is a web API/Browser API
+
+Q) how can we stop blocking the main thread ?
+S: we have to carry out Asynchronous operations in such cases, callBack functions help us to carry ASYNC Tasks, hence we can save the thread from blocking.
+
+NOTE : using WEB APIs(eg: setTimeout()) and callBack functions we achieve carrying out ASYNC Tasks.
+
+
+
+
+//EVENT LOOP IN JS
+
+
+// Akshay Saini Comments 
+
+1. When does the event loop actually start? - Event loop, as the name suggests, is a single-thread, loop that is `almost infinite`. It's always running and doing its job. ❤️
+
+2.  Are only asynchronous web API callbacks are registered in the web API environment? - YES, the synchronous callback functions like what we pass inside map, filter, and reduce aren't registered in the Web API environment. It's just those async callback functions that go through all this.
+
+3. Does the web API environment stores only the callback function and pushes the same callback to queue/microtask queue? - Yes, the callback functions are stored, and a reference is scheduled in the queues. Moreover, in the case of event listeners(for example click handlers), the original callbacks stay in the web API environment forever, that's why it's advised to explicitly remove the listeners when not in use so that the garbage collector does its job.
+
+4. How does it matter if we delay for setTimeout would be 0ms. Then callback will move to queue without any wait? 
+No, there are trust issues with setTimeout() 😅. The callback function needs to wait until the Call Stack is empty. So the 0 ms callback might have to wait for 100ms also if the stack is busy. 
+
+END//
+
+
+NOTE : JS is synchronous single threaded language. But due to some functions like setTimeout, callback functions and AJAX it can behave asynchronously in order to speed up the process.'Time, Tide and JS waits for none!'.
+
+
+
+
+1. Browser has superpowers that are lent to JS engine to execute some tasks, these superpowers include web API's such as console, location, DOM API, setTimeout, fetch, local storage.
+2. Callback functions and event handlers are first stored in Web API environment and then transferred to callback queue.
+3. Promises and mutation observer are stored in API environment and then transferred to microtask queue.
+4. Event loop continuously observes call stack and when it is empty it transfers task to call stack.
+5. Micro task is given priority over callback tasks.
+6. Too many micro tasks generated can cause Starvation (not giving time to callback tasks to execute).
+
+
+Q) where is this callStack Present ?
+S: Inside the JavaScript Engine
+
+NOTE : all the code of JS is executed inside this callStack.
+
+
+NOTE : Host/Domain : www.paytm.com/www.flipkart.com
+
+Q) web Storage APIs ? 
+S: 1) Local Storage 2) Session Storage
+
+
+
+
+// WEB STORAGE APIs
+
+Web Storage APIs are used by developers to store data into the browser. Now the data here refers to the key-value pair of strings. Now storing this data can be done by 2 mechanisms: either by using the sessionStorage API and the localStorage API.
+
+So in session storage, the data is stored in the browser’s memory for that specific session. Session more here means until you close the browser window. Unlike cookies, the data in sessionStorage is never transferred to the server while making a network request. 
+
+The storage limit of session storage is also very high when compared to cookies. The cookies which can generally store around 4000 bytes of data here session storage can store at least 5 MB of data or even more than that depending on the device and browser. Which is a lot!
+
+If we talk about localStorage, it is almost the same as the session storage but the major difference is that it does not have an expiry. So Even if you close the browser and restart your system and come back again anytime the data persists. That makes it unique and very useful. And among these 3, localStorage has higher memory limit.
+
+It’s used a lot even by many big companies to store some less relevant user-specific data into their browsers. Some companies even use it to optimize the performance of the web page speed as access localStorage is faster than making a request to the server and getting the data.
+
+If you have ever observed many companies like Flipkart and Paytm use localStorage for keeping a lot of data. Flipkart. If you go and check the application tab of your developer console. Then you’ll find out that some information such as browsed products, navigation menu, autosuggest history all this user-specific data is being stored in the local storage.
+
+And if you go and check the localStorage for Paytm you’ll also find that even they store a lot of data such as the recent searches for flights, recent cities you selected and even some session data into localStorage.
+
+One more important thing to note here is that due to security reasons it follows the same-origin policy. Same-Origin refers to the same Protocol, same host, and the same port. 
+
+
+// Array Methods -> Map method of array 
+
+
+Q) what is MAP method of array in JS ?
+
+S: whenever we wanna render a list of items 
+
+// Practical Demonstration
+
+1)
+
+const colors = ['red', 'green','pink']
+const items = colors.map(function(color){
+    return '<li>' + color + '</li>';
+});
+
+console.log(items);
+
+2) using Arrow Function
+
+const colors = ['red', 'green','pink']
+const items = colors.map(color => '<li>' + color + '</li>');
+console.log(items);
+
+3) using Template Literals (backticks - ``) in ES6 
+
+const colors = ['red', 'green','pink']
+const items = colors.map(color =>  `<li>${color}</li>`);
+console.log(items);
+
+NOTE : Map Method does not modify the original array.
+
+
+
+
+
+
+// Object Destructuring 
+
+Q) what is Object Destructuring  ???
+s: somewhere in the code, if we wanna extract the value of these properties of an object and wanna store them in seperate variables, then we use what is called  "Object Destructuring" .
+
+const address = {
+    street : "",
+    City :"",
+    Country: "",
+};
+
+// const street = address.street;
+// const City = address.City;      -- Now, what is the problem with this code ?? --> Repetitive Stuff, isn't it ?
+// const Country = address.Country;
+
+so, who's gonna solve this problem ??? --> TADA : we have Object Destructuring.
+
+// so now Object Destructuring solves this problem, so we can replace the above three lines of code with this below single line of code. 
+
+const {street, City, Country} = address;
+
+// Aliasing in Object Destructuring : const { street : st } = address;
+
+
+
+
+
+
+
+
+
+
+
+//////// Spread Operator IN JS 
+
+// 1)  Spread Operator using arrays 
+
+const first = [1,2,3];
+const second = [4,5,6];
+
+const combine = first.concat(second); // if we wanna combine both the arrays-> however this is an old method
+
+// here comes the new method which is Spread Operator
+
+const combined = [...first, ...second]; //Now why is this preferred over the former (above) one, let's see in the below lines.
+//console.log(combined); // [ 1, 2, 3, 4, 5, 6 ]
+
+const combinedd = [...first, 'a', ...second, 'end']; // this is preferred because we can add extra elements but in the former one it is complex to do this.
+console.log(combinedd); // [1, 2, 3, 'a', 4, 5, 6,'end']
+
+
+// cloning of the array using spread operator  
+
+const first = [1,2,3];
+const clone = [...first];
+console.log(first);        //-- [ 1, 2, 3 ]
+console.log(clone);       //-- [ 1, 2, 3 ]
+
+
+
+/// 2) Spread Operator using Objects 
+
+// const first = { name : 'karun'};
+// const second = { job : "Developer"};
+
+// const combine = {...first, ...second};
+// console.log(combine);   // { name: 'karun', job: 'Developer' }
+
+// const setCombine = {...first, ...second, Location : 'Bangalore'};
+// console.log(setCombine);   // { name: 'karun', job: 'Developer', Location: 'Bangalore' }
+
+// cloning of the object using spread operator 
+
+const first = { name : 'karun'};
+const clone = {...first};
+console.log(first);     //  { name: 'karun' }
+console.log(clone);     //  { name: 'karun' }
+
+
+
+
+// Factory Functions or constructor Functions
+
+Q) what are Factory Functions ?
+S: just like how Factory produces products, here factory functions produce objects.
+
+Q) Now, when do we use Factory Functions ?
+S: if our objects have logic then we need a different way to create objects, that's when we use Factory Functions 
+or constructor Functions. (refer E:\CODE_WITH_MOSH\Code with Mosh -  JavaScript Basics for Beginners [AhLaN]\5. Objects--> Factory Functions video)
+
+Q) what are constructor Functions/Methods ?
+s : it is a function which is used to construct or create an object, it is used to Intialize the object.
+this constructor is called only once when an instance of a class is created.
+
+NOTE : Every Object in JavaScript has a Property called Constructor and that references the function that was used to construct or create that object.
+
+
+Q) what is the differenece between Factory Functions & constructor Functions ?
+s: we use camelCase for Factory functions, and PascalCase for constructor Functions.
+
+NOTE : Every Constructor function starts with a Capital Letter.
+Eg : f Object () { [native code] } => here Object is a Built-In Constructor function. 
+// Some of the Built-In Constructor functions in JS are as follows:
+1) new String();
+2) new Boolean();       ///// Note that here all the constructor functions are started with capital letter.
+3) new Number(); 
+
+
+//For..in loop --> is used for objects
+
+
+// For..of Loop --> used for iterables such as arrays and maps
+
+Note : For..of loop can only be used with iterables such as arrays and maps.
+Objects are not iterable, hence we can't use For..of loop for objects, we get TypeError,object is not iterable .
+
+Note : if we still wanna use For..of loop for objects then we have a method called Object.keys(object_name) (it returns an array) ie
+for(let key of Object.keys(object_name) ), Note that here Object is a BUILT-IN CONSTRUCTOR FUNCTION.
+
+
+
+// Ternary Operator In JavaScript
+
+let points = 110;
+let type = points > 100 ? 'gold' : 'silver';
+console.log(type);
+
+
+//NOTE : Ternary or conditional Operator ( Ternary operator is also called as conditional operator ) 
+
+
+// Truthy Values in JavaScript - Anything that is not Falsy is Truthy
+
+
+// Falsy Values in JavaScript 
+
+1) false ( boolean false )
+2) '' (Empty String)
+3) NaN (Not a Number) 
+4) 0
+5) undefined
+6) null
+
+
+Q) what is NaN ??????????
+
+s: -- A special value in JS, whenever we deal with a mathematical calculation that does not produce a valid Number
+then NaN is returned. 
+
+
+
+// Logical Operators with Non-Booleans
+
+1) false || true
+s: true
+
+2) false || 'karun'
+S: "karun"
+
+3) false || 1
+s: 1
+
+
+Q) what is short circuiting in JS ?
+
+S : false || 1 || 2 --> 1 (no matter once it finds truthy operand value,the evaluation stops,it does not see the after value operands even if we have million operands after that, they are completely ignored. ).
+NOTE : note that this is only wrt OR operator.
+
+
+/// true && 'Hi' -> this gives 'Hi' as the output.
+/// true && 'Hi' && 1 -> this gives 1 as the output.
+
+
+// Default Value Property using Logical Operator with Non-Booleans
+ 
+1) Case 1
+
+let userColour = 'Pink';
+let defaultColor = 'white';
+let currentColor = userColour || defaultColor; 
+console.log(currentColor);                          Output --> Pink  
+
+
+2) Case 2
+
+let userColour = undefined;
+let defaultColor = 'white';
+let currentColor = userColour || defaultColor; 
+console.log(currentColor);                          Output --> White
+
+
+Q) Why classes ? ES6 Classes ?
+S: ECMAScript introduced classes in JS, there is a new way to create objects and implement inheritance ie by using Classes, but these classes are not like classes we have in java, c# etc.., they are essentially syntactical sugars over constructor functions in JS, the syntax is cleaner and simpler.
+these classes are essentially functions, they are constructor functions, so classes are objects in JS.
+
+NOTE -> Classes in ES6, enforce the use of new operator. Classes provide a cleaner syntax to implement Inheritance than Prototypical Inheritance.
+
+
+Q) what is PROMISE ?
+S: it is an object that holds the result of an asynchronous operation. so this promise object promises to hold the result of an asynchronous operation, when we create a promise, intially it is in the pending state, when the operation completes that state will change to either resolve or reject, resolve if the operation gets success, reject if the operation gets failed.
+
+// if the promise is resolved it means that the asynchronous operation is completed successfully.
+
+Q) what is an Asynchronous Operation?
+s: it is an operation that is going to complete in the future. when we send a HTTPRequest, there is going to be a delay until we get the result (5/10 milliseconds..etc...). it does not happen immediately, there is always going to be some delay of some milliseconds or even longer.
+
+// STATUS CODES
+1. 200 -> SUCCESS

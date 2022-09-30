@@ -1,0 +1,60 @@
+<!-- Errors Encountered during code push -->
+
+
+Q1) fatal: No configured push destination.                                                  
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name></name>
+
+Ans -> git remote add STUDY_MERN "https://github.com/karunasagar555/STUDY_MERN.git"
+       git push STUDY_MERN
+
+
+
+
+Q2) how the fuck do you switch to a branch ?
+ans : git checkout branchName -> eg: git checkout main (Switched to branch 'main')
+
+
+
+
+Q3) ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/karunasagar555/STUDY_MERN.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+
+ans : git pull
+      git add .
+      git commit -m "msg"
+      git push
+
+
+Q4)  ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/karunasagar555/STUDY_MERN.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+s: git pull https://github.com/*username*/*repository*.git branchName
+   git init
+   git add .
+   git commit -m "msg"
+   git push
+
+Q5) how do you push yur code to GITHUB ?
+ 
+S: git add ./ git add filename (not necessary to include filename in quotes) 
+   git commit -m "message"
+   git push  
+
+
+Q6) On branch main
+Your branch is ahead of 'origin/main' by 2 commits ?
+S : git push

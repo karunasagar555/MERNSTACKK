@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Functional Components</title>
+</head>
+<body>
+    <div id = "root">Virat</div>
+</body>
+
+<script type ="text/babel">
+    // Normal JS 
+    // let ele = document.createElement("h1");
+    // ele.innerText = "Child";
+    // let root = document.getElementById("root");
+    // root.appendChild(ele);
+
+    //React
+    // let ele = React.createElement("h1",{
+    //     children : ['hey']
+    // })
+    // let root = document.getElementById("root");
+    // ReactDOM.render(ele,root);
+  
+    // jsx-> js + xml
+    
+
+    // // Functional-Component
+    function Element({name = "sagar", city = 'Bangalore'}){ ///here Element is a Component,TO BE MORE PRECISE,a FUNCTIONAL COMPONENT,as FUNCTION KEYWORD IS USED.
+        return(                            //--> Inside return we write JSX
+            <h1>Hello {name} from {city}</h1>
+        )
+    }
+    // ReactDOM.render(<Element/>,document.getElementById("root"));
+
+    // CODE REUSABILITY
+    // I'm Creating one more functional component below, to print kohli five times.
+
+    function Main(){  ///here Main is a Component,TO BE MORE PRECISE,a FUNCTIONAL COMPONENT,as FUNCTION KEYWORD IS USED.  
+        return(
+            <React.Fragment>
+                <Element name ="Karun" city ="Bangalore"/>
+                <Element/>
+                <Element/>
+                <Element/>
+                <Element/>
+            </React.Fragment>
+        )
+    }
+    ReactDOM.render(<Main/>, document.getElementById("root"));
+    
+
+
+</script>
+</html>
+
+
+

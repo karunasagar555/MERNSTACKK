@@ -1,0 +1,4 @@
+html web storage provides two objects for storing data on the client 
+
+1) window.localstorage
+2) window.sessionstorage

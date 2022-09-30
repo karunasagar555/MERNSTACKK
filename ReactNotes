@@ -1,0 +1,211 @@
+Q) what is React ?
+
+S : A JavaScript library for building fast and Interactive user interfaces.
+It is a simple lightweight library, not a complete framework like angular.
+It's only responsible for rendering the view, and managing the DOM.
+It makes sure that what we have in the Browser DOM is in sync with the STATE of our application.
+
+ReactDOM -> React's rendering API.
+
+
+npx create-react-app project_Name -> npx create-react-app reactapp (Project Name should not contain Capital Letters) -> this command Installs packages like react,react-DOM and react-scripts with cra-template.
+
+npm start -> Starts the development server.
+
+npm run build -> Bundles the app into static files for production.
+
+npm test -> Starts the test runner.
+
+npm run eject -> Removes this tool and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can’t go back!, We suggest that you begin by typing, cd reactapp then npm start.
+
+without React : HTML/CSS/JS -> DOM -> render on Browser
+
+NOTE : React uses an algorithm called #Diffing, now what's the use of this algo ? It Identifies changes made in code.
+
+React : code-> Diffing Algo -> Virtual DOM -> DOM -> render on Browser
+
+
+Q) how do you start the Development Server/run the React Code?
+S: Use npm start to run, go to the folder in which you have the file that you wanna run. (edit app.js and save to reload)
+
+Q) how do you create a new react project ?
+s: npx create-react-app projectName
+
+Q) How do you quit Development Server ?
+S: press ctrl+c to quit development server.
+
+Q) what does this virtual DOM do ?
+s: it identifies the required changes.
+
+Q) what are the advantages of React ?
+S:  1) very fast
+    2) Easy Event handling (shortcuts)
+    3) small libraray compared to angular which is vast -> easy to learn
+    4) It manages UI by State - let us assume state as a variable, on State change UI is changed accordingly.
+
+
+NOTE : In React, DOM is created only for the changes that were made and combines with the former DOM, In HTML/CSS/JS, the whole page is reloaded (In react, only that part is reloaded where the changes were made) once any changes are made and a whole new DOM is created everytime.
+
+About React Componenets - they are Isolated, Reusable, Independent pieces of code. 
+
+Q) how many types of react components ?
+
+s:  1) Functional Components - (starts with function keyword) -> it is used when we wanna make Static UIs.
+we can make Dynamic UIs as well using Functional Components, but we have to use HOOKS along with Functional Components to make it.
+
+
+2) Class Components - (starts with Class keyword) -> it is used when we wanna make Dynamic UIs.
+In Class Components we have STATE OBJECT AND RENDER METHOD.
+
+Q) what is state ?
+s: IT IS A REACT OBJECT, which stores information of our react component. if we wanna display some informatiom in our component and that display changes, so we store it in STATE. from the name, we can say at that point of time, it represents some value.
+
+Q) what is render ?
+s: whenever the state changes in a component the render method is called and that component is re-rendered.
+
+
+Q) what is JSX ?
+
+S:  Javascript + XML - > It allows us to write HTML inside of JS and places them in DOM without using functions like createElement() or appendChild(). we write JSX inside return() .
+
+Q) How do you Define an HTML Class in JSX?
+s: we can no longer use the word class to define HTML classes in JSX. This is because class is a reserved word in JavaScript. Instead, JSX uses className.
+
+Q) WHAT are the rules for using JSX ?
+S: NOT ALLOWED
+1. Varible declaration not allowed. (JSX is written inside return())
+2. Function declaration not allowed.
+3. Loops(for, while, do while) not allowed.
+4. if-else statements are not allowed.
+5. we cannot render objects.
+
+ALTERNATIVES IF the above things are not allowed.
+1. we cannot write a variable inside return(), ie we cannot declare a variable inside return().
+2. we cannot write a function inside return(), ie we cannot declare a function inside return().
+3. we can use Higher-order-Functions such as MAP, FILTER, REDUCE.
+4. we can use Ternary-Operator
+5. we can use arrays rendering
+
+
+Q) what is root ?
+s: It is the targetNode, the DOM node that you want to render the component to.
+
+
+Q) what does Babel do ?
+s: babel converts JSX -> JS
+
+HTML/CSS/JS -> Browser (render on Browser)
+JSX -> Babel -> JS -> Browser (render on Browser)
+
+Q) React Packages 
+S : In order to get access to React's diffing algo and virtual Dom, and babel, we need the below packages.
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+
+Q) Named Exports and default exports ??
+s: 
+Default Exports : Import React from 'react' ; // Default Exports are not kept in curly braces, here React is a    Default Export from 'react' Module.
+   
+Named Exports : Import React, {Component} from 'react' ; //Named Exports are kept in curly braces, here Component is a Named Export .
+
+/////////////////   PROPS      ////////////////////
+
+PROPS : we give ARGUMENTS to our function, but here in React we do not have a function, rather we have what we call
+a Functional Component, so in React we call ARGUMENTS as PROPS.
+they are used to pass data to our components.
+
+Q) What is THIS Keyword in React/JS ?
+S: THIS returns a reference to the current object or the global object "window" in standalone function.
+
+Q) what is a Controlled Component/Controlled Elements ?
+S:  Controlled Components does not have their own STATE, it gets all the data via PROPS and notifies changes by raising EVENTS.
+
+NOTE : when we are working with Controlled Elements/Controlled Components, we cannot use NULL or UNDEFINED, otherwise React thinks that we are working with an Uncontrolled Component.
+
+Q) what is REST in REST API ?
+S : Representational State Transfer. Rest is basically a convention for building the HTTTP Services.
+
+NOTE : Endpoints usually work in CRUD Formation
+1. CREATE 
+2. READ 
+3. UPDATE 
+4. DELETE
+
+\\ HTTP REQUEST METHODS with CRUD OPERATIONS.
+1. CREATE ->  POST REQUESTS - sending information, send Data to BACKEND.
+2. READ -> GET REQUESTS - getting Informtion, request Data from BACKEND.
+3. UPDATE -> PUT REQUESTS - which is the UPDATE of the CRUD - UPDATE Data that's already in the BACKEND.
+4. DELETE -> DELETE REQUESTS - DELETE Data in the Database.
+
+
+\\ HTTP REQUEST METHODS
+1. GET -> we use GET for getting data.
+2. POST -> we use POST for Creating Data.
+3. PUT -> we use PUT for updating Data.
+4. DELETE -> we use DELETE for DELETING Data.
+
+\\ Every HTTP REQUEST has a property called METHOD (Request Method) which determines the Intent of that Request.
+
+Q) what is the difference between PUT & PATCH ?
+s: BOTH are used for Updating the data, we use PATCH to update one or more properties, whereas PUT is used to update all properties.
+
+
+Q) what is Await in Javascript ? 
+S: when a method returns a PROMISE, we should Await it to get the Response.
+
+
+// HTTP ERRORS
+
+!!!) EXPECTED ERRORS
+
+1. If we try to delete a post with an Invlid Id, then the SERVER will return a response with a STATUS CODE : 404 - NOT FOUND (because on the SERVER the VALIDATION FAILS).
+
+2. WHEN WE TRY to submit a form with Invlid Data, then the SERVER will return a response with a STATUS CODE : 400 -
+BAD REQUEST.
+
+As we can see, the errors are in the 400 range, IN HTTP PROTOCOL we refer to these errors as CLIENT ERRORS(Errors that happen because the CLIENT did something WRONG).
+
+
+!!!) UNEXPECTED ERRORS : These Errors Technically should not happen under normal circumstances.
+
+1. Network Down : if the Network is down, we won't be able to call the SERVER, this is an Exceptional Situation (this is an unexpected error, becuse the network should not be down).
+
+2. SERVER Down : the Network might be up but maybe the SERVER is down.
+
+3. DATABASE Down : Perhaps, the SERVER is also UP & RUNNING, but the DATABASE is down.
+
+4. BUG : or maybe all these pieces are UP & RUNNING, but we have a BUG in our application. 
+
+we need to handle these unexpected errors differently, first we need to log them, so in future we can look at our LOG and find errors that should not have happened.
+
+
+Q) what is Axios ?
+S: Axios is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
+
+NOTE : npx remove-node-modules -> TO REMOVE NODE MODULES.
+NOTE : npm install - To Install Node Modules
+
+NOTE : Strict Mode in react, </React.StrictMode>, Inside this strict mode, tests of App.test.js will run.
+
+NOTE : WE have to remove </React.StrictMode> in index.js .
+
+Q) what is this.setState ?
+s: this.setState is a built-in method, this is the only way by using which we can change the value of the state, there is no other way to change the value of the state. once this method is called, render method understands that the state has been changed so now it is my time ie render method will be called.
+
+
+Q) arrow function and this ?
+s: arrow function always takes/binds the "this" of it's parent, it doesn't have it's own "this".
+
+Q) what does bind method do ?
+S: bind method binds to the whichever scope we need.
+
+Q) what is the difference between HTML & JSX ?
+S: One key difference in JSX is that you can no longer use the word class to define HTML classes. This is because class is a reserved word in JavaScript. Instead, JSX uses className.
+
+In fact, the naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is onClick, instead of onclick. Likewise, onchange becomes onChange. While this is a subtle difference, it is an important one to keep in mind moving forward.
+
+
