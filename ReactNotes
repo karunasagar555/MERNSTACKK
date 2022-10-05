@@ -222,4 +222,38 @@ so we have 2 HOOKS : 1) useState, 2) useEffect
 
 Note : all those functions which start with "use" are examples of HOOKS.
 
+NOTE : we cannot call HOOKS inside LOOPS, CONDITIONS, NESTED FUNCTIONS.
+
 NOTE : HOOKS do not work in CLASS COMPONENTS.
+
+//////////////////// LIFECYCLE METHODS ///////////////////////////////////
+
+1) Mounting
+
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+
+constructor()
+render()
+componentDidMount()
+
+
+2) Updating
+
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+
+render()
+componentDidUpdate()
+
+3) Unmounting
+
+This method is called when a component is being removed from the DOM:
+
+componentWillUnmount()
+
+4) Error Handling
+
+These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+componentDidCatch()
+
+
