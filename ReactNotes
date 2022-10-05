@@ -184,7 +184,11 @@ we need to handle these unexpected errors differently, first we need to log them
 
 
 Q) what is Axios ?
-S: Axios is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
+S: Axios is a promised-based HTTP client for JavaScript (browser and Node.js). It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
+NOTE : Axios makes it easy to send asynchronous HTTP requests to REST Endpoints and perform crud operations. 
+it is a library which is used to send asynchronous HTTP requests to REST Endpoints. this library is very useful to 
+perform CRUD Operations. This popular library is used to communicate with the backend. it supports the Promise API,
+native to JS ES6.
 
 NOTE : npx remove-node-modules -> TO REMOVE NODE MODULES.
 NOTE : npm install - To Install Node Modules
@@ -209,3 +213,13 @@ S: One key difference in JSX is that you can no longer use the word class to def
 In fact, the naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is onClick, instead of onclick. Likewise, onchange becomes onChange. While this is a subtle difference, it is an important one to keep in mind moving forward.
 
 
+Q) what are hooks ?
+S: hooks are functions that lets us hook into React features such as State and Lifecycle Methods using functional components.
+so we have 2 HOOKS : 1) useState, 2) useEffect
+
+1) useState HOOK : to change the STATE we have useState HOOK.
+2) useEffect HOOK : for LIFE CYCLE METHODS we use useEffect HOOK.
+
+Note : all those functions which start with "use" are examples of HOOKS.
+
+NOTE : HOOKS do not work in CLASS COMPONENTS.
