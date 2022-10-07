@@ -200,6 +200,10 @@ NOTE : WE have to remove </React.StrictMode> in index.js .
 Q) what is this.setState ?
 s: this.setState is a built-in method, this is the only way by using which we can change the value of the state, there is no other way to change the value of the state. once this method is called, render method understands that the state has been changed so now it is my time ie render method will be called.
 
+PRIMITIVE TYPES : this.setState checks the value
+NON-PRIMITIVE TYPES : this.setState checks the Location ie the Address.
+
+
 
 Q) arrow function and this ?
 s: arrow function always takes/binds the "this" of it's parent, it doesn't have it's own "this".
@@ -213,18 +217,6 @@ S: One key difference in JSX is that you can no longer use the word class to def
 In fact, the naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is onClick, instead of onclick. Likewise, onchange becomes onChange. While this is a subtle difference, it is an important one to keep in mind moving forward.
 
 
-Q) what are hooks ?
-S: hooks are functions that lets us hook into React features such as State and Lifecycle Methods using functional components.
-so we have 2 HOOKS : 1) useState, 2) useEffect
-
-1) useState HOOK : to change the STATE we have useState HOOK.
-2) useEffect HOOK : for LIFE CYCLE METHODS we use useEffect HOOK.
-
-Note : all those functions which start with "use" are examples of HOOKS.
-
-NOTE : we cannot call HOOKS inside LOOPS, CONDITIONS, NESTED FUNCTIONS.
-
-NOTE : HOOKS do not work in CLASS COMPONENTS.
 
 //////////////////// LIFECYCLE METHODS ///////////////////////////////////
 
@@ -257,3 +249,48 @@ These methods are called when there is an error during rendering, in a lifecycle
 componentDidCatch()
 
 
+
+/////////////////////// HOOKS /////////////////////////////////
+
+Q) what are hooks ?
+S: hooks are functions that lets us hook into React features such as State and Lifecycle Methods using functional components.
+so we have 2 HOOKS : 1) useState, 2) useEffect
+
+1) useState HOOK : to change the STATE we have useState HOOK.
+2) useEffect HOOK : for LIFE CYCLE METHODS we use useEffect HOOK.
+
+Note : all those functions which start with "use" are examples of HOOKS.
+
+NOTE : we cannot call HOOKS inside LOOPS, CONDITIONS, NESTED FUNCTIONS.
+
+NOTE : HOOKS do not work in CLASS COMPONENTS.
+
+NOTE : React Component Names must start with an Uppercase Letter, React HOOK Names must start with the word "use".
+
+
+Q) what are the rules for using React HOOKS ?
+S: MENTIONED BELOW
+1. we cannot call HOOKS inside LOOPS, CONDITIONS & NESTED FUNCTIONS.
+2. React HOOK Names must start with the word "use".
+
+Q) what is Context API?
+S: Context API provides a way to pass data through the Component Tree without (w/o) having to pass PROPS down manually at each level. we have Global Store where we store data and access it when another component wants it.
+we have a HOOK called useContext which helps us to access the GLOBAL STORE.
+
+NOTE : GLOBAL STORE IS CONTEXT ITSELF.
+
+
+
+//////////////////      FIREBASE        ///////////////////////////
+
+To implement Backend we use firebase -> Baas - Backend as a service.
+
+FIREBASE consists of 
+
+1) Cloud Firestore - to store data 
+
+2) Firebase Hosting - for hosting
+
+3) Authorization 
+
+4) Cloud Storage - to store large amounts of data.
