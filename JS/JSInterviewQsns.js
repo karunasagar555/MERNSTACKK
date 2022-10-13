@@ -13,26 +13,17 @@ functions even before initialising/assigning value without getting error and thi
 
 
 
+// NOTE : Variable and class declarations are also hoisted, so they too can be referenced before they are declared. 
+//Note that doing so can lead to unexpected errors, and is not generally recommended. 
 
 
-///////////////////// FUNCTION HOISTING /////////////////////  
-
-//- One of the advantages of hoisting is that it lets you use a function before you declare it in your code.
-
-catName("Tiger");
-
-function catName(name) {
-  console.log(`My cat's name is ${name}`);     // The result of the code above is: "My cat's name is Tiger"
-}
-
-
-/* Variable and class declarations are also hoisted, so they too can be referenced before they are declared. 
-Note that doing so can lead to unexpected errors, and is not generally recommended. */
+//-----------------------------------------------------------------------------------------------------------------
 
 
 
 
-///////////////////// Variable hoisting /////////////////////
+
+////////////////////////////////////////////  Variable hoisting  ///////////////////////////////////////////////////
 
 // -  Hoisting works with variables too, so you can use a variable in code before it is declared and/or initialized.
 
@@ -57,7 +48,12 @@ const num = 6;   // ReferenceError: num is not defined
 
 
 
-///////////////////// Temporal dead zone (TDZ) /////////////////////////////////
+
+//-----------------------------------------------------------------------------------------------------------------
+
+
+
+//////////////////////////////////////////////Temporal dead zone (TDZ) ////////////////////////////////////////////////
 
 /* A let or const variable is said to be in a "temporal dead zone" (TDZ) from the start of the block until the
 code execution reaches the line where the variable is declared and initialized. While inside the TDZ, the variable 
@@ -114,60 +110,153 @@ let e = function () {
 e();       // output - 3
 
 
-///////////////////// FUNCTION HOISTING /////////////////////  
+//-----------------------------------------------------------------------------------------------------------------
+
+
+////////////////////////////////////////////// FUNCTION HOISTING ////////////////////////////////////////////////////
 
 /*  
 
-- 1) FUNCTION DECLARATION HOISTING
+NOTE : By default, functions return undefined. To return any other value, 
+the function must have a return statement that specifies the value to return.
 
-FUNCTION DECLARATION is also known as FUNCTION STATEMENT */
 
-// FUNCTION DECLARATION AKA FUNCTION STATEMENT -- this is how we declare a function in JS.
-// 1) Namaste JavaScript
+- One of the advantages of hoisting is that it lets you use a function before you declare it in your code.
 
+
+- FUNCTION DECLARATION is also known as FUNCTION STATEMENT
+
+//////// FUNCTION DECLARATION AKA FUNCTION STATEMENT ////////
+
+NOTE : According to ECMASCRIPT SPECIFICATION, a FUNCTION STATEMENT AKA FUNCTION DECLARATION should always have a Name.
+
+// FUNCTION DECLARATION -- this is how we declare a function in JS */
+
+//1) Namaste JavaScript
 function a(){
     console.log("a called");
 }
 
-// 2)
+// 2) MDN
 function calcRectArea(width, height) {
   return width * height;                    
 }
-
-console.log(calcRectArea(5, 6));
-// expected output: 30
+console.log(calcRectArea(5, 6));      // expected output: 30
 
 
 
+// 1)  FUNCTION DECLARATION HOISTING
+
+// Function declarations in JavaScript are hoisted to the top of the enclosing function or global scope. 
+// You can use the function before you declared it:
+
+// MDN
+hoisted();                       // logs "foo"
+
+function hoisted() {
+  console.log('foo');
+}
+
+
+// MDN
+catName("Tiger");
+
+function catName(name) {
+  console.log(`My cat's name is ${name}`);     // The result of the code above is: "My cat's name is Tiger"
+}
+
+// NAMASTE JAVASCRIPT
+
+getName ();
+
+function getName () {
+    console.log("NAMASTE Akshay");        // NAMASTE Akshay
+}
+
+
+// Note :  FUNCTION DECLARATIONS are HOISTED IN JS
+
+
+// FUNCTION Expression -- this is how we declare a function Expression in JS
+
+// 1) Namaste JavaScript
+var z  = function () {
+    console.log("z called");
+}
+
+// 2) // MDN
+const getRectArea = function(width, height) {
+    return width * height;
+};
+console.log(getRectArea(3, 4));                  //      expected output: 12
+
+
+/////////////////////////// Anonymous function
+// - Anonymous functions are used in a place where functions are used as values
+//function () {
+
+// }
+
+
+/* A function expression is very similar to and has almost the same syntax as a function declaration 
+(see function statement for details). The main difference between a function expression and a function declaration 
+is the function name, which can be omitted in function expressions to create anonymous functions. see example below*/
+
+var z = function () {
+    console.log("z called");  // here we have an Anonymous function
+}
+
+z();
+
+
+// Named Function Expression 
+
+var p = function xyz () {
+    console.log("b called");
+}
+
+// NOTE : Function expressions in JavaScript are not hoisted, unlike function declarations. 
+// You can't use function expressions before you create them. (BECAUSE it is treated like a variable)
 
 
 
 
+//-----------------------------------------------------------------------------------------------------------------
+
+
+/* 3) what is the difference between a FUNCTION DECLARATION & a FUNCTION Expression  ?
+- A function expression is very similar to and has almost the same syntax as a function declaration 
+(see function statement for details). The main difference between a function expression and a function declaration 
+is the function name, which can be omitted in function expressions to create anonymous functions.
+
+NOTE : The main difference is Hoisting, FUNCTION DECLARATIONS are Hoisted whereas FUNCTION Expressions are not Hoisted.
 
 
 
+/* 4) what is an IIFE ?
+- When functions are used only once, a common pattern is an IIFE (Immediately Invoked Function Expression).
+- IIFE are function expressions that are invoked as soon as the function is declared. */
+
+//examples:
+
+// 1)
+(function () {
+    console.log('Code runs!');             // output: Code runs
+}) ();
+
+//2)
+!function () {
+    console.log('Code runs!');            // output: Code runs
+}();
 
 
 
+//-----------------------------------------------------------------------------------------------------------------
+
+////////////////////////////////////////////// CLASS HOISTING ////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 2) what is Classes ?  
+/* 2) what is Class ?  
 - Classes are a template for creating objects.
 
 // Defining Classes
@@ -185,6 +274,9 @@ class Rectangle {
   }
 }
 
+/* Classes defined using a class declaration are hoisted, which means that JavaScript has a reference to the class. 
+However the class is not initialized by default, so any code that uses it before the line in which it is 
+initialized is executed will throw a ReferenceError.
 
 
 
@@ -197,30 +289,72 @@ class Rectangle {
 
 
 
+////////////////////////////////////////  GUESS THE OUTPUT     //////////////////////////////////////////////////////////
+
+// 1) Named Function Expression 
+var p = function xyz () {
+    console.log("b called");
+}
+xyz();   // ReferenceError: xyz is not defined (here we are passig this function as a value, this xyz is not created 
+//in the outer scope, so this xyz is, not a function inside this outer scope, in the global scope, but it is created
+//as a local variable)
+
+
+// 2)
+var p = function xyz () {
+    console.log(xyz);                 // [Function: xyz]
+}
+p();
 
 
 
+// 3) Named Function Expression 
+var p = function xyz () {
+    console.log("b called");
+}
+p();                                  // b called
 
 
+//4) 
+console.log(getName);
+
+function getName () {
+    console.log("NAMASTE Akshay");        // [Function: getName]
+}
 
 
+//5) Arrow Function snippet
 
+console.log(getName);   // undefined (here, getName behaves like a normal variable, so we get undefined)
 
+var getName = () => {
+    console.log("NAMASTE Akshay");
+}
 
+//6) Arrow Function snippet
 
+getName();   // TypeError: getName is not a function (here, if we could see the above example, if we console the 
+             // getName function, we are getting undefined, in this example we are calling the getName function,
+             // so basically we are calling 'undefined', so we get an error saying not a function)
 
+var getName = () => {
+    console.log("NAMASTE Akshay");
+}
 
+//7) 
+console.log(getName2);     // undefined
 
+var getName2 = function () {
+    console.log("hey");         
+}
 
+//8)
 
+getName2();             // TypeError: getName2 is not a function
 
-
-
-
-
-
-
-
+var getName2 = function () {
+    console.log("hey");   
+}
 
 
 
