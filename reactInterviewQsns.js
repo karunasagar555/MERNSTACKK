@@ -105,3 +105,15 @@ StrictMode currently helps with:
 
 
 // react-router-dom is used for?   ->   Web Applications
+
+
+
+/* Advantages of Flux ---------------------------------------------------------------
+
+- It is a unidirectional data flow model which is easy to understand.
+
+- It is open source and more of a design pattern than a formal framework like MVC architecture.
+
+- The flux application is easier to maintain.
+
+- The flux application parts are decoupled.         */
